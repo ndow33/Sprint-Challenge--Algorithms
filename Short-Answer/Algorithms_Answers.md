@@ -12,7 +12,7 @@ This is because we have a linear for loop that will run through the entire
 range of n. The function j*=2 is also linear (1/2n).  
 
 
-c) ANSWER: O(N)
+c) ANSWER: O(n)
 
 ## Exercise II
 
