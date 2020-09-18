@@ -93,11 +93,80 @@ class SortingRobot:
         return self._light == "ON"
 
     def sort(self):
-        """
-        Sort the robot's list.
-        """
-        # Fill this out
-        pass
+        # Sort the robot's list.
+        # leave the light off while we can move right
+        while self.light_is_on() == False:
+            # if we can move right
+            if self.can_move_right() == True:
+                self.swap_item()
+                self.move_right()
+                # If our held item is greater than the item in front of us
+                if self.compare_item() > 0:
+                    # Switch the two items' positions
+                    self.swap_item()
+                    self.move_left()
+                    self.swap_item()
+                    # as long as we can move left
+                    while self.can_move_left() == True:
+                        self.swap_item()
+                        self.move_left()
+                        
+                        # if our held item is smaller
+                        if self.compare_item() < 1:
+                            # Switch the two items' positions
+                            self.swap_item()
+                            self.move_right()
+                            self.swap_item()
+                            self.move_left()
+                        else:
+                            # Put the item back
+                            self.move_right()
+                            self.swap_item()
+                            self.move_left()
+                            self.move_right()
+                    # return to top of while loop
+                else:
+                    # Put the item back
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+
+            # if we can't move right
+            else:
+                # exit the loop
+                self.set_light_on()
+
+
+
+
+
+        while self.light_is_on() == True:
+            if self.can_move_left() == True:
+                self.swap_item()
+                self.move_left()
+                # If our held item is less than the item in front of us
+                if self.compare_item() < 1:
+                    # Switch the two items' positions
+                    self.swap_item()
+                    self.move_right()
+                    self.swap_item()
+                    self.move_left()
+                else:
+                    # Put the item back
+                    self.move_right()
+                    self.swap_item()
+                    self.move_left()
+            else:
+                # exit the loop
+                self.set_light_off()
+        
+        # check to see if they're in order
+        while self.light_is_on() == False:
+            if self.can_move_left() == True:
+                self.swap_item()
+        
+        return self
+        
 
 
 if __name__ == "__main__":
@@ -110,3 +179,56 @@ if __name__ == "__main__":
 
     robot.sort()
     print(robot._list)
+
+
+'''
+    def sort(self):
+        # Sort the robot's list.
+        while self.light_is_on() == False:
+            # if we can move right
+            if self.can_move_right() == True:
+                self.swap_item()
+                self.move_right()
+                # If our held item is greater than the item in front of us
+                if self.compare_item() > 0:
+                    # Switch the two items' positions
+                    self.swap_item()
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                else:
+                    # Put the item back
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+            # if we can't move right
+            else:
+                # exit the loop
+                self.set_light_on()
+
+        while self.light_is_on() == True:
+            if self.can_move_left() == True:
+                self.swap_item()
+                self.move_left()
+                # If our held item is less than the item in front of us
+                if self.compare_item() < 1:
+                    # Switch the two items' positions
+                    self.swap_item()
+                    self.move_right()
+                    self.swap_item()
+                    self.move_left()
+                else:
+                    # Put the item back
+                    self.move_right()
+                    self.swap_item()
+                    self.move_left()
+            else:
+                # exit the loop
+                self.set_light_off()
+        
+        # check to see if they're in order
+        while self.light_is_on() == False:
+            if self.can_move_left() == True:
+                self.swap_item()
+        
+        return self'''
