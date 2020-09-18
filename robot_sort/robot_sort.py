@@ -123,8 +123,13 @@ class SortingRobot:
                             self.move_right()
                             self.swap_item()
                             self.move_left()
-                            self.move_right()
-                    # return to top of while loop
+                        # return to top of 2nd while loop
+
+                    # if you can't move left, move right
+                    self.move_right()
+                        
+                    # return to top of 1st while loop
+
                 else:
                     # Put the item back
                     self.move_left()
@@ -135,37 +140,6 @@ class SortingRobot:
             else:
                 # exit the loop
                 self.set_light_on()
-
-
-
-
-
-        while self.light_is_on() == True:
-            if self.can_move_left() == True:
-                self.swap_item()
-                self.move_left()
-                # If our held item is less than the item in front of us
-                if self.compare_item() < 1:
-                    # Switch the two items' positions
-                    self.swap_item()
-                    self.move_right()
-                    self.swap_item()
-                    self.move_left()
-                else:
-                    # Put the item back
-                    self.move_right()
-                    self.swap_item()
-                    self.move_left()
-            else:
-                # exit the loop
-                self.set_light_off()
-        
-        # check to see if they're in order
-        while self.light_is_on() == False:
-            if self.can_move_left() == True:
-                self.swap_item()
-        
-        return self
         
 
 
