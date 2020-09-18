@@ -7,9 +7,9 @@ While the while loop has n^3 as the condition, we increment a by
 n^2 each time
 
 
-b) ANSWER: O(n^2)   
+b) ANSWER: O(n log n)   
 This is because we have a linear for loop that will run through the entire
-range of n. The function j*=2 is also linear (1/2n).  
+range of n. The function j*=2 is O(log n).  
 
 
 c) ANSWER: O(n)
